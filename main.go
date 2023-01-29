@@ -113,7 +113,7 @@ func handleImapConn(imapConn net.Conn, parenConn net.Conn, info ClientInfo) {
 			info.clientId,
 			msg[:len(msg)-2],
 		))
-		logStr := fmt.Sprintf("%s online: %s dateTime: %s \n", colorStr, clientSetToStr(info), t.Format("2006-01-02 15:04:05"))
+		logStr := fmt.Sprintf("%s online: %s dateTime: %s", colorStr, clientSetToStr(info), t.Format("2006-01-02 15:04:05"))
 		fmt.Println(logStr)
 		n, err := parenConn.Write([]byte(msg))
 		if err != nil {
