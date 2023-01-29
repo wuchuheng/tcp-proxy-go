@@ -130,7 +130,11 @@ func clientSetToStr(info ClientInfo) string {
 		result = fmt.Sprintf("%s C%d", result, k)
 	}
 	info.mutex.Unlock()
-	return fmt.Sprintf("[%s]", result[1:])
+	if len(result) > 0 {
+		result = result[1:]
+	}
+
+	return fmt.Sprintf("[%s]", result)
 }
 
 type IdMapColor map[int]func(str string) string
@@ -145,6 +149,12 @@ func convertColorStrByClientId(clientId int, content string) string {
 		},
 		2: func(str string) string {
 			return color.GreenString(str)
+		},
+		3: func(str string) string {
+			return color.YellowString(str)
+		},
+		4: func(str string) string {
+			return color.MagentaString(str)
 		},
 	}
 	colorId := clientId % len(idMapColor)
