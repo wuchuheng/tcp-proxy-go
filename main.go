@@ -85,7 +85,7 @@ func handleConn(conn net.Conn, clientInfo ClientInfo) {
 			convertColorStrByClientId(clientInfo.clientId,
 				fmt.Sprintf(
 					"C%d: %s  ",
-					clientInfo.clientId, msg[:len(msg)-2],
+					clientInfo.clientId, msg[:len(msg)-1],
 				),
 			),
 			fmt.Sprintf("online: %s dateTime: %s", clientSetToStr(clientInfo), t.Format("2006-01-02 15:04:05")),
